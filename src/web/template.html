@@ -1,0 +1,313 @@
+<title>Negros Algae Fuel Calculator</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: instrument panel. Inputs on the left in grouped racks, readouts on the right, sweep chart and method notes below. */
+:root {
+  --bg: #f4f6f3; --panel: #ffffff; --ink: #18211d; --ink2: #4c5a53; --muted: #7f8c85; --line: #d9e0db;
+  --accent: #1d6b57; --accent-soft: #dcefe7; --warn: #a15c00; --warn-soft: #fbefd9; --bad: #b3261e; --bad-soft: #fbe3e1; --good: #1b7a3e; --good-soft: #def3e4;
+  --cme: #6250d6; --diesel: #3c3f3d; --track: #e4e9e5;
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif; --f-body: "Public Sans", "Segoe UI", Roboto, sans-serif; --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f1412; --panel: #171e1b; --ink: #e6ece8; --ink2: #b3c0b9; --muted: #84928b; --line: #2b3631;
+  --accent: #5cc4a3; --accent-soft: #173a30; --warn: #e4a54a; --warn-soft: #3a2c14; --bad: #f08a80; --bad-soft: #3d1c1a; --good: #6fd08f; --good-soft: #163522;
+  --cme: #a99bff; --diesel: #c9cfcb; --track: #26302c; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0f1412; --panel: #171e1b; --ink: #e6ece8; --ink2: #b3c0b9; --muted: #84928b; --line: #2b3631;
+  --accent: #5cc4a3; --accent-soft: #173a30; --warn: #e4a54a; --warn-soft: #3a2c14; --bad: #f08a80; --bad-soft: #3d1c1a; --good: #6fd08f; --good-soft: #163522;
+  --cme: #a99bff; --diesel: #c9cfcb; --track: #26302c; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-block: 28px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 22px; }
+header { display: grid; gap: 6px; }
+.eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.15; margin: 0; text-wrap: balance; }
+.lede { color: var(--ink2); max-width: 70ch; margin: 0; }
+h2 { font-family: var(--f-display); font-weight: 600; font-size: 17px; margin: 0; }
+h3 { font-family: var(--f-display); font-weight: 600; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink2); margin: 0; }
+.grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+@media (min-width: 881px) { #out-panel { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); } }
+@media (max-width: 880px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 16px; min-width: 0; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.seg button { font: 600 13px var(--f-body); padding: 8px 14px; border: 0; background: transparent; color: var(--ink2); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--panel); }
+.presets { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip-btn { font: 500 12.5px var(--f-body); padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; }
+.chip-btn:hover { border-color: var(--accent); color: var(--accent); }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.rack { display: grid; gap: 12px; padding-top: 4px; border-top: 1px solid var(--line); padding-block: 12px 0; }
+.ctl { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; align-items: center; }
+.ctl label { font-size: 13.5px; color: var(--ink); }
+.ctl .val { font-family: var(--f-mono); font-size: 13px; color: var(--accent); font-variant-numeric: tabular-nums; text-align: right; min-width: 7ch; }
+.ctl input[type=range] { grid-column: 1 / -1; width: 100%; accent-color: var(--accent); }
+.ctl .hint { grid-column: 1 / -1; font-size: 12px; color: var(--muted); }
+.ctl.dim { opacity: .45; }
+.tog { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 13.5px; }
+.tog input { width: 18px; height: 18px; accent-color: var(--accent); }
+.readouts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.ro { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; display: grid; gap: 4px; }
+.ro .k { font-size: 12px; color: var(--ink2); }
+.ro .v { font-family: var(--f-display); font-weight: 700; font-size: 28px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.ro .u { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.pill { justify-self: start; font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; }
+.pill.good { background: var(--good-soft); color: var(--good); } .pill.warn { background: var(--warn-soft); color: var(--warn); } .pill.bad { background: var(--bad-soft); color: var(--bad); }
+.scale { display: grid; gap: 6px; }
+.scale svg { width: 100%; height: auto; display: block; }
+.note { font-size: 12.5px; color: var(--ink2); }
+.warnbox { border: 1px solid var(--warn); background: var(--warn-soft); color: var(--ink); border-radius: 8px; padding: 10px 12px; font-size: 13px; }
+.chart-wrap { overflow-x: auto; }
+.method { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 880px) { .method { grid-template-columns: minmax(0, 1fr); } }
+.method p, .method li { font-size: 13.5px; color: var(--ink2); margin: 0; }
+.method ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--line); }
+td.n, th.n { text-align: right; font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+footer { font-size: 12.5px; color: var(--muted); display: grid; gap: 6px; border-top: 1px solid var(--line); padding-top: 14px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Prototype web calculator · machine-learning surrogate · USD 2026</div>
+    <h1>Algae fuel from San Carlos flue gas: cost and climate in one screen</h1>
+    <p class="lede">Move the inputs to see the minimum fuel selling price (MFSP), the life-cycle greenhouse-gas intensity (GWP), capital and output of a microalgae fuel plant in San Carlos City, Negros Occidental. Cost, GHG and capital come from neural networks trained on 16,000 runs of the full process, techno-economic and ecoinvent 3.12 life-cycle model; annual output is calculated exactly. On held-out runs the networks agree with that model to within the mean errors shown below (about 1% for cost and GHG, 2–3% for capital); this is agreement with the model, not accuracy against a real plant.</p>
+  </header>
+
+  <div class="grid">
+    <section class="panel" aria-labelledby="in-h">
+      <div class="toolbar">
+        <h2 id="in-h">Design and assumptions</h2>
+        <div class="seg" role="group" aria-label="Conversion route">
+          <button id="rt-HTL" aria-pressed="true">HTL + hydrotreating</button>
+          <button id="rt-FAME" aria-pressed="false">Lipid extraction + FAME</button>
+        </div>
+      </div>
+      <div class="presets" aria-label="Example settings">
+        <button class="chip-btn" data-preset="base">2026 base design (S01/S02)</button>
+        <button class="chip-btn" data-preset="lowc">Low-carbon power, biomass heat</button>
+        <button class="chip-btn" data-preset="large">2,000 ha at 25 g/m²/d</button>
+        <button class="chip-btn" data-preset="opt">PNNL design biology</button>
+      </div>
+      <div id="racks"></div>
+    </section>
+
+    <section class="panel" id="out-panel" aria-labelledby="out-h" aria-live="polite">
+      <h2 id="out-h">Results</h2>
+      <div class="readouts">
+        <div class="ro"><span class="k">Minimum fuel selling price</span><span class="v" id="o-mfsp">–</span><span class="u">USD per litre diesel-equivalent</span><span class="pill" id="p-mfsp"></span></div>
+        <div class="ro"><span class="k">Life-cycle GHG intensity</span><span class="v" id="o-gwp">–</span><span class="u">g CO₂e per MJ (IPCC 2021 GWP100)</span><span class="pill" id="p-gwp"></span></div>
+        <div class="ro"><span class="k">Total capital investment</span><span class="v" id="o-tci">–</span><span class="u">USD million (2025 CEPCI)</span></div>
+        <div class="ro"><span class="k">Fuel output</span><span class="v" id="o-out">–</span><span class="u">million litres diesel-eq. per year</span></div>
+      </div>
+      <div class="scale">
+        <h3>Price against the market</h3>
+        <svg id="sc-price" viewBox="0 0 520 74" role="img" aria-label="MFSP compared with diesel and coconut methyl ester prices"></svg>
+      </div>
+      <div class="scale">
+        <h3>Emissions against fossil diesel and EU RED II thresholds</h3>
+        <svg id="sc-gwp" viewBox="0 0 520 74" role="img" aria-label="GWP compared with fossil diesel and the 50% and 65% saving thresholds"></svg>
+      </div>
+      <div class="warnbox" id="warn" hidden></div>
+      <p class="note" id="derived"></p>
+    </section>
+  </div>
+
+  <section class="panel" aria-labelledby="sw-h">
+    <div class="toolbar"><h2 id="sw-h">How productivity moves the price</h2><span class="note">All other inputs as set above. Marker: current setting.</span></div>
+    <div class="chart-wrap"><svg id="sweep" viewBox="0 0 900 300" role="img" aria-label="MFSP against areal productivity"></svg></div>
+  </section>
+
+  <section class="panel" aria-labelledby="m-h">
+    <h2 id="m-h">What sits behind the numbers</h2>
+    <div class="method">
+      <div><h3>The engine</h3><ul>
+        <li>Open raceway ponds (<i>Chlorella vulgaris</i>) fed flue-gas CO₂ from an 18 MW bagasse power plant; settler–membrane–centrifuge dewatering to 20% solids.</li>
+        <li>Route A: hydrothermal liquefaction at 350 °C and 20.9 MPa, then hydrotreating to renewable diesel and naphtha. Route B: wet hexane extraction, transesterification, residue to anaerobic digestion and CHP.</li>
+        <li>Bottom-up capital from NREL and PNNL design reports, CEPCI 2025 = 813 (USD 2025), Southeast Asian proxy location factor; operating prices of 2026; real, unlevered 30-year DCF at 10%; six-year income-tax holiday; tax losses carried forward five years.</li>
+        <li>Background inventory: ecoinvent 3.12 cut-off; one whole-system energy-allocation factor (indicative, not a RED II compliance calculation); functional unit 1 MJ of fuel (LHV).</li></ul></div>
+      <div><h3>The surrogate</h3>
+        <table><thead><tr><th>Output</th><th class="n">HTL R²</th><th class="n">HTL MAPE</th><th class="n">FAME R²</th><th class="n">FAME MAPE</th></tr></thead><tbody id="mtab"></tbody></table>
+        <p style="margin-top:8px">A 64-64 multilayer perceptron per output, trained on Latin-hypercube samples of 17 inputs (productivity 8–40 g/m²/d) and tested on 20% held-out runs. In a separate test, a model trained only below 25 g/m²/d had larger errors above 30 g/m²/d; the model used here is trained over the full range, and the sliders stop at the trained limits. The networks see all inputs, so they can react slightly to inputs that have no physical effect (approximation error); for that reason output is calculated exactly rather than by the network. Output metrics in the table are those of the network, shown for reference.</p></div>
+      <div><h3>Reading the result</h3><ul>
+        <li>CME benchmark: coconut methyl ester at 2.22 USD per litre (August 2026), equal to 2.44 USD per litre diesel-equivalent. It is an economic benchmark only: HTL renewable diesel is not an ester, and its eligibility for the biodiesel mandate is not assumed.</li>
+        <li>Diesel benchmark: 1.29 USD per litre, before excise and VAT.</li>
+        <li>GHG thresholds: RED II sets 50%, 60% or 65% savings depending on when an installation started, against a regulatory fossil comparator of 94 g CO₂e/MJ. Meeting a number here is not regulatory compliance.</li>
+        <li>This is a screening tool. The project database holds exported results only; decisions should use the full Python model in the model code package.</li><li>The low-carbon preset changes the emission factor and heat source only; it keeps the grid electricity price, so it is not scenario S27 or S32.</li><li>Pond areas above about 1,150 ha need more CO₂ than the 18 MW San Carlos plant emits; larger designs assume a second free biogenic CO₂ source.</li></ul></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Cereno, S. G., &amp; Evidente, R. C. (2026). Re-assessing microalgae fuel against the Philippine biodiesel benchmark: an integrated TEA–LCA with uncertainty, optimisation and machine-learning surrogates. Internal technical report v1.1.</span>
+    <span>AI-use statement: the model code, analyses, this calculator and the drafts of the reports were produced with the assistance of an AI agent (Claude, Anthropic) working under the authors' direction. The authors checked the inputs, results and sources and are responsible for the content.</span>
+  </footer>
+</div>
+
+<script>
+const M = __MODEL__;
+const FEAT = M.feat;
+const CME = 2.4371, DIESEL = 1.289, FOSSIL = 94.0;
+const GROUPS = [
+  ["Biology", [["prod", "Areal productivity", "g/m²/d", 1, "Annual average. NREL measured 16.7 in 2023; design target 25."], ["htl_y", "HTL biocrude yield", "kg/kg AFDW", 2, "PNNL 2022 SOT 0.33; Chlorella run 0.41; design 0.59.", "HTL"], ["lipid", "Lipid content", "kg/kg AFDW", 2, "Wastewater-grown Chlorella 0.16–0.27.", "FAME"]]],
+  ["Scale and design", [["log_area", "Pond area", "ha", 0, "Base 400 ha; NREL farm 2,000 ha."], ["lined", "Fully lined ponds", "", 0, "Base: liners on pond turns only."], ["heat_bio", "Biomass-fired process heat", "", 0, "Bagasse boiler instead of LPG."]]],
+  ["Energy", [["ef_el", "Electricity GHG factor", "kg CO₂e/kWh", 3, "Visayas grid 2024: 1.137. Hypothetical biomass PPA 0.054. Solar PPA 0.070 (PV only, battery not included)."], ["p_el", "Electricity price", "USD/kWh", 3, "Estimated Visayas industrial tariff, 2026: 0.181."], ["p_heat", "Heat price", "USD/GJ", 1, "LPG-fired steam ≈ 25."], ["mix_kwh", "Paddlewheel mixing energy", "kWh/ha/d", 0, "NREL design 48."]]],
+  ["Markets", [["p_h2", "Hydrogen price", "USD/kg", 2, "Small LPG reformer ≈ 4.0 (includes reformer capital and operation)."], ["p_urea", "Urea price", "USD/t", 0, "2026 delivered ≈ 469."]]],
+  ["Finance", [["r", "Real discount rate", "", 3, "Base 10%."], ["life", "Plant life", "years", 0, "Base 30."], ["loc_f", "Location factor", "× US Gulf Coast", 2, "Philippines ≈ 1.12."], ["cap_mult", "Capital multiplier", "× base estimate", 2, "AACE Class 4 range 0.7–1.5."], ["ith", "Six-year income-tax holiday", "", 0, "CREATE MORE incentive."]]]
+];
+const BASE = { prod: 20, log_area: Math.log10(400), htl_y: 0.41, lipid: 0.20, ef_el: 1.137, p_el: 0.181, p_h2: 4.0, p_heat: 25, loc_f: 1.12, cap_mult: 1, r: 0.10, life: 30, p_urea: 469, mix_kwh: 48, heat_bio: 0, lined: 0, ith: 1 };
+const PRESETS = {
+  base: {},
+  lowc: { ef_el: 0.054, heat_bio: 1 },
+  large: { log_area: Math.log10(2000), prod: 25 },
+  opt: { prod: 25, htl_y: 0.59, lipid: 0.27 }
+};
+const BIN = new Set(["lined", "heat_bio", "ith"]);
+let route = "HTL";
+let x = { ...BASE };
+function fmeta(n) { return FEAT.find(f => f.name === n); }
+function fmtVal(n, v, dp) {
+  if (n === "log_area") return Math.round(10 ** v).toLocaleString("en-US") + " ha";
+  if (n === "r") return (v * 100).toFixed(1) + "%";
+  return Number(v).toLocaleString("en-US", { minimumFractionDigits: dp, maximumFractionDigits: dp });
+}
+function build() {
+  const host = document.getElementById("racks"); host.innerHTML = "";
+  for (const [g, items] of GROUPS) {
+    const rack = document.createElement("div"); rack.className = "rack";
+    rack.innerHTML = `<h3>${g}</h3>`;
+    for (const [n, lab, unit, dp, hint, only] of items) {
+      const f = fmeta(n);
+      if (BIN.has(n)) {
+        const w = document.createElement("label"); w.className = "tog"; w.htmlFor = "in-" + n;
+        w.innerHTML = `<span>${lab}<br><span class="note">${hint}</span></span><input type="checkbox" id="in-${n}">`;
+        rack.appendChild(w);
+        const el = w.querySelector("input"); el.checked = x[n] > 0.5;
+        el.addEventListener("change", () => { x[n] = el.checked ? 1 : 0; update(); });
+      } else {
+        const w = document.createElement("div"); w.className = "ctl"; if (only) w.dataset.only = only;
+        const step = n === "life" ? 1 : (f.hi - f.lo) / 200;
+        w.innerHTML = `<label for="in-${n}">${lab}${unit ? ` <span class="note">(${unit})</span>` : ""}</label><span class="val" id="v-${n}"></span>
+          <input type="range" id="in-${n}" min="${f.lo}" max="${f.hi}" step="${step}" value="${x[n]}"><span class="hint">${hint}</span>`;
+        rack.appendChild(w);
+        const el = w.querySelector("input");
+        el.addEventListener("input", () => { x[n] = parseFloat(el.value); update(); });
+      }
+    }
+    host.appendChild(rack);
+  }
+}
+function syncInputs() {
+  for (const f of FEAT) {
+    const el = document.getElementById("in-" + f.name); if (!el) continue;
+    if (BIN.has(f.name)) el.checked = x[f.name] > 0.5; else el.value = x[f.name];
+  }
+}
+function forward(net, xs) {
+  let h = xs.map((v, i) => (v - net.mean[i]) / net.scale[i]);
+  for (let L = 0; L < net.W.length; L++) {
+    const W = net.W[L], b = net.b[L], out = new Array(b.length).fill(0);
+    for (let i = 0; i < h.length; i++) { const hi = h[i], row = W[i]; if (hi === 0) continue; for (let j = 0; j < b.length; j++) out[j] += hi * row[j]; }
+    for (let j = 0; j < b.length; j++) { out[j] += b[j]; if (L < net.W.length - 1 && out[j] < 0) out[j] = 0; }
+    h = out;
+  }
+  return net.log ? Math.exp(h[0]) : h[0];
+}
+function predict(r, xx) {
+  // inputs with no physical effect on a route are held at base so the networks cannot react to them
+  xx = r === "HTL" ? { ...xx, lipid: BASE.lipid } : { ...xx, htl_y: BASE.htl_y, p_h2: BASE.p_h2 };
+  const xs = FEAT.map(f => xx[f.name]); const o = {};
+  for (const net of M[r]) o[net.out] = forward(net, xs);
+  // annual output has a closed form (Eq. E1, E2, E8/E10, E13): computed exactly, not by the network
+  o.ldeq = M.out_coef[r] * xx.prod * Math.pow(10, xx.log_area) * (r === "HTL" ? xx.htl_y : xx.lipid);
+  return o;
+}
+function pill(el, cls, text) { el.className = "pill " + cls; el.textContent = text; }
+function css(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function bar(svgId, lo, hi, val, marks, unit, log) {
+  const svg = document.getElementById(svgId), W = 520, x0 = 14, x1 = W - 14;
+  const t = v => log ? x0 + (Math.log(v) - Math.log(lo)) / (Math.log(hi) - Math.log(lo)) * (x1 - x0) : x0 + (v - lo) / (hi - lo) * (x1 - x0);
+  const cv = Math.min(Math.max(val, lo), hi);
+  let s = `<rect x="${x0}" y="30" width="${x1 - x0}" height="10" rx="5" fill="${css("--track")}"/>`;
+  s += `<rect x="${x0}" y="30" width="${Math.max(t(cv) - x0, 4)}" height="10" rx="5" fill="${css("--accent")}"/>`;
+  marks.forEach(([v, lab, col], i) => {
+    const X = t(v), up = i % 2 === 0;
+    s += `<line x1="${X}" x2="${X}" y1="${up ? 18 : 26}" y2="${up ? 44 : 52}" stroke="${css(col)}" stroke-width="2"/>`;
+    const anchor = X < 70 ? "start" : X > W - 70 ? "end" : "middle";
+    s += `<text x="${X}" y="${up ? 13 : 66}" font-size="11.5" text-anchor="${anchor}" fill="${css("--ink2")}" font-family="Public Sans, sans-serif">${lab}</text>`;
+  });
+  s += `<circle cx="${t(cv)}" cy="35" r="7" fill="${css("--panel")}" stroke="${css("--accent")}" stroke-width="3"/>`;
+  svg.innerHTML = s;
+}
+function sweep() {
+  const svg = document.getElementById("sweep"), W = 900, H = 300, L = 60, R = 24, T = 18, B = 44;
+  const f = fmeta("prod"), n = 49, xs = [], ys = [];
+  for (let i = 0; i < n; i++) { const p = f.lo + (f.hi - f.lo) * i / (n - 1); xs.push(p); ys.push(predict(route, { ...x, prod: p }).mfsp_ldeq); }
+  const ymax = Math.max(...ys, CME) * 1.08, ymin = 0;
+  const X = v => L + (v - f.lo) / (f.hi - f.lo) * (W - L - R), Y = v => T + (1 - (v - ymin) / (ymax - ymin)) * (H - T - B);
+  const ink2 = css("--ink2"), line = css("--line");
+  let s = "";
+  const step = ymax > 20 ? 5 : ymax > 8 ? 2 : 1;
+  for (let v = 0; v <= ymax; v += step) s += `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="${line}"/><text x="${L - 8}" y="${Y(v) + 4}" font-size="12" text-anchor="end" fill="${ink2}" font-family="IBM Plex Mono, monospace">${v}</text>`;
+  for (let v = 10; v <= 40; v += 5) s += `<text x="${X(v)}" y="${H - B + 20}" font-size="12" text-anchor="middle" fill="${ink2}" font-family="IBM Plex Mono, monospace">${v}</text>`;
+  s += `<text x="${(L + W - R) / 2}" y="${H - 6}" font-size="12.5" text-anchor="middle" fill="${ink2}" font-family="Public Sans, sans-serif">Areal productivity, g/m²/d</text>`;
+  s += `<text x="16" y="${(T + H - B) / 2}" font-size="12.5" text-anchor="middle" fill="${ink2}" font-family="Public Sans, sans-serif" transform="rotate(-90 16 ${(T + H - B) / 2})">MFSP, USD/L deq</text>`;
+  [[CME, "CME 2.44", "--cme"], [DIESEL, "Diesel ex-tax 1.29", "--diesel"]].forEach(([v, lab, c]) => {
+    s += `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="${css(c)}" stroke-dasharray="5 4" stroke-width="1.5"/><text x="${W - R - 4}" y="${Y(v) - 6}" font-size="12" text-anchor="end" fill="${css(c)}" font-family="Public Sans, sans-serif">${lab}</text>`;
+  });
+  s += `<rect x="${X(10)}" y="${T}" width="${X(21) - X(10)}" height="${H - T - B}" fill="${css("--accent-soft")}" opacity="0.6"/>`;
+  s += `<line x1="${X(25)}" x2="${X(25)}" y1="${T}" y2="${H - B}" stroke="${ink2}" stroke-dasharray="3 3"/><text x="${X(25) + 4}" y="${T + 30}" font-size="11" fill="${ink2}" font-family="Public Sans, sans-serif">US design target 25</text>`;
+  s += `<text x="${X(15.5)}" y="${T + 14}" font-size="11.5" text-anchor="middle" fill="${ink2}" font-family="Public Sans, sans-serif">measured outdoor range (≈10–21)</text>`;
+  const pts = xs.map((v, i) => `${X(v).toFixed(1)},${Y(ys[i]).toFixed(1)}`).join(" ");
+  s += `<polyline points="${pts}" fill="none" stroke="${css("--accent")}" stroke-width="2.5"/>`;
+  const cur = predict(route, x).mfsp_ldeq;
+  s += `<circle cx="${X(x.prod)}" cy="${Y(cur)}" r="7" fill="${css("--panel")}" stroke="${css("--accent")}" stroke-width="3"/>`;
+  svg.innerHTML = s;
+}
+function update() {
+  for (const f of FEAT) { const v = document.getElementById("v-" + f.name); if (v) { const g = GROUPS.flatMap(gg => gg[1]).find(it => it[0] === f.name); v.textContent = fmtVal(f.name, x[f.name], g ? g[3] : 2); } }
+  document.querySelectorAll(".ctl[data-only]").forEach(el => el.classList.toggle("dim", el.dataset.only !== route));
+  const o = predict(route, x);
+  document.getElementById("o-mfsp").textContent = o.mfsp_ldeq.toFixed(2);
+  document.getElementById("o-gwp").textContent = o.gwp.toFixed(1);
+  document.getElementById("o-tci").textContent = (o.tci / 1e6).toFixed(0);
+  document.getElementById("o-out").textContent = (o.ldeq / 1e6).toFixed(2);
+  const pm = document.getElementById("p-mfsp");
+  if (o.mfsp_ldeq <= DIESEL) pill(pm, "good", "Below diesel ex-tax");
+  else if (o.mfsp_ldeq <= CME) pill(pm, "warn", "Below CME, above diesel");
+  else pill(pm, "bad", `${(o.mfsp_ldeq / CME).toFixed(1)}× the CME price`);
+  const sav = 1 - o.gwp / FOSSIL, pg = document.getElementById("p-gwp");
+  if (sav >= 0.65) pill(pg, "good", `${Math.round(sav * 100)}% saving: meets 65%`);
+  else if (sav >= 0.5) pill(pg, "warn", `${Math.round(sav * 100)}% saving: meets 50% only`);
+  else pill(pg, "bad", sav > 0 ? `${Math.round(sav * 100)}% saving: below 50%` : "Negligible or no saving");
+  bar("sc-price", 0.8, 40, o.mfsp_ldeq, [[DIESEL, "diesel 1.29", "--diesel"], [CME, "CME 2.44", "--cme"]], "", true);
+  bar("sc-gwp", 0, 200, o.gwp, [[FOSSIL * 0.35, "65% saving", "--good"], [FOSSIL * 0.5, "50% saving", "--warn"], [FOSSIL, "fossil 94", "--diesel"]], "", false);
+  const ab = (o.mfsp_ldeq - DIESEL) / 35.9 / ((FOSSIL - o.gwp) / 1e6);
+  document.getElementById("derived").textContent = sav > 0.02
+    ? `Implied CO₂ abatement cost against fossil diesel: ${Math.round(ab).toLocaleString("en-US")} USD per tonne CO₂e. Fuel energy: ${(o.ldeq * 35.9 / 1e6).toFixed(0)} TJ per year.`
+    : `The design saves no meaningful GHG against fossil diesel, so an abatement cost is not defined. Fuel energy: ${(o.ldeq * 35.9 / 1e6).toFixed(0)} TJ per year.`;
+  const w = [];
+  if (route === "HTL" && x.ef_el > 0.9 && x.heat_bio < 0.5) w.push("On the Visayas grid the electricity used for mixing, CO₂ delivery and dewatering makes up more than half of the GWP.");
+  if (Math.pow(10, x.log_area) > 1150) w.push("Above about 1,150 ha the farm needs more CO₂ than the 18 MW San Carlos plant emits; this result assumes a second free biogenic CO₂ source.");
+  if (x.prod > 30) w.push("Productivity above 30 g/m²/d has not been measured at farm scale; the surrogate error is also larger near the edge of its training range.");
+  if (route === "FAME" && x.lipid > 0.3) w.push("Lipid contents above 30% in wastewater-grown Chlorella usually come with lower productivity; the two inputs move independently here.");
+  const wb = document.getElementById("warn"); wb.hidden = w.length === 0; wb.textContent = w.join(" ");
+  sweep();
+}
+function setRoute(r) { route = r; ["HTL", "FAME"].forEach(k => document.getElementById("rt-" + k).setAttribute("aria-pressed", String(k === r))); update(); }
+document.getElementById("rt-HTL").addEventListener("click", () => setRoute("HTL"));
+document.getElementById("rt-FAME").addEventListener("click", () => setRoute("FAME"));
+document.querySelectorAll("[data-preset]").forEach(b => b.addEventListener("click", () => { x = { ...BASE, ...PRESETS[b.dataset.preset] }; syncInputs(); update(); }));
+const mt = document.getElementById("mtab");
+[["mfsp_ldeq", "MFSP"], ["gwp", "GWP"], ["tci", "Capital"], ["ldeq", "Output"]].forEach(([k, lab]) => {
+  const h = M.metrics.HTL[k], f = M.metrics.FAME[k];
+  mt.insertAdjacentHTML("beforeend", `<tr><td>${lab}</td><td class="n">${h.r2.toFixed(4)}</td><td class="n">${(h.mape * 100).toFixed(1)}%</td><td class="n">${f.r2.toFixed(4)}</td><td class="n">${(f.mape * 100).toFixed(1)}%</td></tr>`);
+});
+build(); update();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", update);
+new MutationObserver(update).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+</script>

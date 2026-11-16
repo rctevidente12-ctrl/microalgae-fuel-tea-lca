@@ -42,8 +42,12 @@ pip install -r requirements.txt
 | `src/run_unc.py`, `run_opt.py`, `run_ml.py` | uncertainty and sensitivity, optimisation, surrogates |
 | `src/figs_*.py`, `figstyle.py`, `ctx.py` | figures |
 | `src/engine/` | builds the ecoinvent matrices and unit scores |
+| `src/build_db.py` | writes the results database (Supplementary Data S1) |
+| `src/build_report.py`, `build_ms.py`, `rep_a.py`, `rep_b.py`, `rep_c.py`, `doclib.py`, `render_docx.js`, `render_ms.js` | assemble the technical report and the manuscript draft (Node.js with the `docx` package) |
+| `src/build_calc.py`, `src/web/template.html` | build the browser calculator from the surrogate model |
+| `calculator/Algal-fuel-calculator.html` | the browser calculator (open in any browser) |
 
-Scripts that only assembled the report, manuscript, database workbook and web calculator are not included.
+The full results database is submitted with the article as Supplementary Data S1.
 
 ## Declaration
 
