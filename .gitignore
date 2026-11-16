@@ -1,0 +1,5 @@
+engine/
+parsed/
+results/
+figs/
+__pycache__/
