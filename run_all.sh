@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Reproduces every result of the manuscript, in order. Run from the repository root.
-# Requires the ecoinvent-derived files in engine/ (see README, step 1).
+# Runs with data/unit_scores_gwp.json alone (costs and GWP); uses the licensed ecoinvent files in engine/ when present (see README).
 set -euo pipefail
 export ALGAE_HOME="$(pwd)"
 cd src

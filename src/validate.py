@@ -22,9 +22,6 @@ def pnnl_htl():
     mfsp_2011_gge = o["mfsp_mj"] * gge_mj / cepci(2011)
     return dict(case="PNNL whole-algae HTL design", published=4.49, model=mfsp_2011_gge, unit="USD2011 per GGE",
                 note="Biomass bought at $430/ton; aqueous phase to CHG; US prices; H2 bought at $1.60/kg instead of an on-site H2 plant.", source="jones2014")
-if __name__ == "__main__":
-    for f in VALID:
-        r = f(); print(r, f"dev {100*(r['model']/r['published']-1):+.0f}%")
 
 def anl_lca():
     """ANL supply-chain LCA of the PNNL HTL design: 35,700 g CO2e/MMBtu renewable diesel = 33.8 g/MJ."""
@@ -35,3 +32,6 @@ def anl_lca():
     o = evaluate(P, D)
     return dict(case="ANL LCA of PNNL HTL pathway", published=33.8, model=o["gwp"], unit="g CO2e/MJ", note=f"US grid {D['ef_el']:.3f} kg/kWh (ecoinvent 3.12); CHG; 59% yield; 25 g/m2/d.", source="pegallapati2015")
 VALID = [nrel_farm, pnnl_htl, anl_lca]
+if __name__ == "__main__":
+    for f in VALID:
+        r = f(); print(r, f"dev {100*(r['model']/r['published']-1):+.0f}%")

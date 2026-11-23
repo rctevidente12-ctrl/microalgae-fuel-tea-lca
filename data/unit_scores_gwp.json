@@ -1,0 +1,1174 @@
+{
+ "source": "ecoinvent 3.12, allocation cut-off by classification; IPCC 2021 GWP100 (AR6), kg CO2-eq per unit of reference product",
+ "indicators": [
+  [
+   "Environmental Prices",
+   "Freshwater ecotoxicity",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Particulate matter formation",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Water depletion",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Freshwater eutrophication",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Climate change",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Human toxicity",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Marine ecotoxicity",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Fossil depletion",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Metal depletion",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Agricultural land occupation",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Terrestrial acidification",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Ionising radiation",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Urban land occupation",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Terrestrial ecotoxicity",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Marine eutrophication",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Photochemical oxidant formation",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Ozone depletion",
+   null
+  ],
+  [
+   "Environmental Prices",
+   "Natural land transformation",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Land use",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Marine ecotoxicity",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Terrestrial ecotoxicity",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Freshwater eutrophication",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Ionizing radiation",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Human carcinogenic toxicity",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Ozone formation, Terrestrial ecosystems",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Terrestrial acidification",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Stratospheric ozone depletion",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Freshwater ecotoxicity",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Fossil resource scarcity",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Marine eutrophication",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Fine particulate matter formation",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Water consumption",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Human non-carcinogenic toxicity",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Global warming",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Mineral resource scarcity",
+   null
+  ],
+  [
+   "ReCiPe 2016 Midpoint (H)",
+   "Ozone formation, Human health",
+   null
+  ],
+  [
+   "Cumulative Energy Demand (LHV)",
+   "Non renewable, fossil",
+   null
+  ],
+  [
+   "Cumulative Energy Demand (LHV)",
+   "Renewable, wind, solar, geothe",
+   null
+  ],
+  [
+   "Cumulative Energy Demand (LHV)",
+   "Non-renewable, biomass",
+   null
+  ],
+  [
+   "Cumulative Energy Demand (LHV)",
+   "Non-renewable, nuclear",
+   null
+  ],
+  [
+   "Cumulative Energy Demand (LHV)",
+   "Renewable, water",
+   null
+  ],
+  [
+   "Cumulative Energy Demand (LHV)",
+   "Renewable, biomass",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Photochemical oxidation (low NOx)",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Marine sediment ecotox. 500a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Marine aquatic ecotox. 100a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Photochemical oxidation (MOIR, high NOx)",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Abiotic depletion (elem., reserve base)",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Lower limit of net global warming",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Photochem. oxid. (MIR, very high NOx)",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Upper limit of net global warming",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Photochem. oxid. (incl. NMVOC av.)",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Marine aquatic ecotox. 500a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Ozone layer depletion 30a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Malodorous air",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Marine sediment ecotox. 100a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Ozone layer depletion 20a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Acidification (fate not incl.)",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Mar. aq. ecotox. (PAH, Xylene & NMVOC av",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Abiotic depletion (elem., econ. reserve)",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Human toxicity 500a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Terrestrial ecotoxicity 100a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Ozone layer depletion 5a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Photochem. oxid. (incl. NOx & NMVOC av.)",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Fw. aq. ecot.  (PAH, Xylene & NMVOC av.)",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Human tox. (incl. PAH, Xylene & NMVOC av",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Freshwater sediment ecotox. infinite",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Ozone layer depletion 40a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Freshwater aquatic ecotox. 20a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Global warming 500a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Terr. ecotox. (PAH, Xylene & NMVOC av.)",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Human toxicity 20a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Freshwater sediment ecotox. 500a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Eutrophication (incl. fate)",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Human toxicity 100a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Ozone layer depletion 25a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Ozone layer depletion 10a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Freshwater sediment ecotox. 100a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Land competition",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Terrestrial ecotoxicity 20a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Ionising radiation",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Marine sediment ecotox. infinite",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Photochemical oxidation (EBIR, low NOx)",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Terrestrial ecotoxicity 500a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Ozone layer depletion 15a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Marine sediment ecotox. 20a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Freshwater aquatic ecotox. 100a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Marine aquatic ecotox. 20a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Freshwater aquatic ecotox. 500a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Ozone layer depletion (incl. NMVOC av.)",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Freshwater sediment ecotox. 20a",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Global warming 100a (incl. NMVOC av.)",
+   null
+  ],
+  [
+   "CML-IA non-baseline",
+   "Global warming 20a",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Human carcinogenic toxicity",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Human non-carcinogenic toxicity",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Marine ecotoxicity",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Terrestrial acidification",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Water consumption, Human health",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Ozone formation, Human health",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Water consumption, Terrestrial ecosystem",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Freshwater eutrophication",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Global warming, Terrestrial ecosystems",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Freshwater ecotoxicity",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Fine particulate matter formation",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Marine eutrophication",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Land use",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Water consumption, Aquatic ecosystems",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Fossil resource scarcity",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Ionizing radiation",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Global warming, Human health",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Mineral resource scarcity",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Stratospheric ozone depletion",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Global warming, Freshwater ecosystems",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Ozone formation, Terrestrial ecosystems",
+   null
+  ],
+  [
+   "ReCiPe 2016 Endpoint (H)",
+   "Terrestrial ecotoxicity",
+   null
+  ],
+  [
+   "IPCC 2013 GWP 100a",
+   "IPCC GWP 100a",
+   null
+  ],
+  [
+   "USEtox 2 (recommended only)",
+   "Human toxicity, non-cancer",
+   null
+  ],
+  [
+   "USEtox 2 (recommended only)",
+   "Freshwater ecotoxicity",
+   null
+  ],
+  [
+   "USEtox 2 (recommended only)",
+   "Human toxicity, cancer",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Human toxicity, cancer - inorganics",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Photochemical ozone formation",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Climate change - Land use and LU change",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Ionising radiation",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Human toxicity, non-cancer - organics",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Resource use, fossils",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Ecotoxicity, freshwater - inorganics",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Eutrophication, marine",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Human toxicity, non-cancer",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Ecotoxicity, freshwater - metals",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Climate change",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Resource use, minerals and metals",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Ozone depletion",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Human toxicity, cancer - metals",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Human toxicity, cancer - organics",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Ecotoxicity, freshwater - organics",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Eutrophication, terrestrial",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Climate change - Biogenic",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Land use",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Ecotoxicity, freshwater",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Human toxicity, cancer",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Eutrophication, freshwater",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Human toxicity, non-cancer - inorganics",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Human toxicity, non-cancer - metals",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Climate change - Fossil",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Particulate matter",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Water use",
+   null
+  ],
+  [
+   "EF 3.0 Method (adapted)",
+   "Acidification",
+   null
+  ],
+  [
+   "Cumulative Energy Demand",
+   "Renewable, water",
+   null
+  ],
+  [
+   "Cumulative Energy Demand",
+   "Renewable, wind, solar, geothe",
+   null
+  ],
+  [
+   "Cumulative Energy Demand",
+   "Non-renewable, biomass",
+   null
+  ],
+  [
+   "Cumulative Energy Demand",
+   "Renewable, biomass",
+   null
+  ],
+  [
+   "Cumulative Energy Demand",
+   "Non renewable, fossil",
+   null
+  ],
+  [
+   "Cumulative Energy Demand",
+   "Non-renewable, nuclear",
+   null
+  ],
+  [
+   "AWARE",
+   "Water use",
+   null
+  ],
+  [
+   "CML-IA baseline",
+   "Ozone layer depletion (ODP)",
+   null
+  ],
+  [
+   "CML-IA baseline",
+   "Human toxicity",
+   null
+  ],
+  [
+   "CML-IA baseline",
+   "Fresh water aquatic ecotox.",
+   null
+  ],
+  [
+   "CML-IA baseline",
+   "Eutrophication",
+   null
+  ],
+  [
+   "CML-IA baseline",
+   "Marine aquatic ecotoxicity",
+   null
+  ],
+  [
+   "CML-IA baseline",
+   "Abiotic depletion (fossil fuels)",
+   null
+  ],
+  [
+   "CML-IA baseline",
+   "Abiotic depletion",
+   null
+  ],
+  [
+   "CML-IA baseline",
+   "Global warming (GWP100a)",
+   null
+  ],
+  [
+   "CML-IA baseline",
+   "Acidification",
+   null
+  ],
+  [
+   "CML-IA baseline",
+   "Photochemical oxidation",
+   null
+  ],
+  [
+   "CML-IA baseline",
+   "Terrestrial ecotoxicity",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "natural land transformation - NLTP",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "urban land occupation - ULOP",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "freshwater eutrophication - FEP",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "human toxicity - HTPinf",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "ozone depletion - ODPinf",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "marine ecotoxicity - METPinf",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "ionising radiation - IRP_HE",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "terrestrial ecotoxicity - TETPinf",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "marine eutrophication - MEP",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "water depletion - WDP",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "metal depletion - MDP",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "photochemical oxidant formation - POFP",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "fossil depletion - FDP",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "terrestrial acidification - TAP100",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "particulate matter formation - PMFP",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "agricultural land occupation - ALOP",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "freshwater ecotoxicity - FETPinf",
+   null
+  ],
+  [
+   "ei -  ReCiPe Midpoint (H)",
+   "climate change - GWP100",
+   null
+  ],
+  [
+   "IPCC 2021 GWP100 (AR6)",
+   "climate change: GWP100",
+   "kg CO2-Eq"
+  ]
+ ],
+ "activities": [
+  {
+   "key": "ad_plant",
+   "activity": "market for anaerobic digestion plant, for biowaste",
+   "location": "GLO",
+   "product": "anaerobic digestion plant, for biowaste",
+   "gwp100": 1349615.9311110715
+  },
+  {
+   "key": "chem_factory",
+   "activity": "market for chemical factory, organics",
+   "location": "GLO",
+   "product": "chemical factory, organics",
+   "gwp100": 149841611.994665
+  },
+  {
+   "key": "co2_liquid",
+   "activity": "market for carbon dioxide, liquid",
+   "location": "RoW",
+   "product": "carbon dioxide, liquid",
+   "gwp100": 0.8713631277597593
+  },
+  {
+   "key": "coconut_oil",
+   "activity": "market for coconut oil, crude",
+   "location": "GLO",
+   "product": "coconut oil, crude",
+   "gwp100": 2.533036719202668
+  },
+  {
+   "key": "concrete",
+   "activity": "market for concrete, normal strength",
+   "location": "RoW",
+   "product": "concrete, normal strength",
+   "gwp100": 304.89145503342246
+  },
+  {
+   "key": "dap",
+   "activity": "market for diammonium phosphate",
+   "location": "RoW",
+   "product": "diammonium phosphate",
+   "gwp100": 1.6340466121500663
+  },
+  {
+   "key": "diesel",
+   "activity": "market for diesel",
+   "location": "RoW",
+   "product": "diesel",
+   "gwp100": 0.8558173656111392
+  },
+  {
+   "key": "el_PH",
+   "activity": "market for electricity, medium voltage",
+   "location": "PH",
+   "product": "electricity, medium voltage",
+   "gwp100": 0.9625517071433044
+  },
+  {
+   "key": "el_US",
+   "activity": "market group for electricity, medium voltage",
+   "location": "US",
+   "product": "electricity, medium voltage",
+   "gwp100": 0.4447883498617097
+  },
+  {
+   "key": "el_bio",
+   "activity": "treatment of bagasse, from sugarcane, in heat and power co-generation unit, 6400kW thermal",
+   "location": "IN-Eastern grid",
+   "product": "electricity, high voltage",
+   "gwp100": 0.04807526557740856
+  },
+  {
+   "key": "el_pv",
+   "activity": "electricity production, photovoltaic, 570kWp open ground installation, multi-Si",
+   "location": "AU",
+   "product": "electricity, low voltage",
+   "gwp100": 0.06241480552085002
+  },
+  {
+   "key": "excavation",
+   "activity": "market for excavation, hydraulic digger",
+   "location": "GLO",
+   "product": "excavation, hydraulic digger",
+   "gwp100": 0.5853826795264161
+  },
+  {
+   "key": "fame_market",
+   "activity": "market for fatty acid methyl ester",
+   "location": "RoW",
+   "product": "fatty acid methyl ester",
+   "gwp100": 2.447149791424938
+  },
+  {
+   "key": "glycerine",
+   "activity": "market for glycerine",
+   "location": "RoW",
+   "product": "glycerine",
+   "gwp100": 3.1212193878613803
+  },
+  {
+   "key": "h2",
+   "activity": "market for hydrogen, gaseous, low pressure",
+   "location": "RoW",
+   "product": "hydrogen, gaseous, low pressure",
+   "gwp100": 9.533775955586142
+  },
+  {
+   "key": "h3po4",
+   "activity": "market for phosphoric acid, industrial grade, without water, in 85% solution state",
+   "location": "GLO",
+   "product": "phosphoric acid, industrial grade, without water, in 85% solution state",
+   "gwp100": 1.3926651437508417
+  },
+  {
+   "key": "hcl",
+   "activity": "market for hydrochloric acid, without water, in 30% solution state",
+   "location": "RoW",
+   "product": "hydrochloric acid, without water, in 30% solution state",
+   "gwp100": 0.8861925653269992
+  },
+  {
+   "key": "hdpe",
+   "activity": "market for polyethylene, high density, granulate",
+   "location": "RoW",
+   "product": "polyethylene, high density, granulate",
+   "gwp100": 3.1867631357821287
+  },
+  {
+   "key": "heat_ng",
+   "activity": "heat production, natural gas, at industrial furnace >100kW",
+   "location": "RoW",
+   "product": "heat, district or industrial, natural gas",
+   "gwp100": 0.07416864545447693
+  },
+  {
+   "key": "heat_wood",
+   "activity": "heat production, softwood chips from forest, at furnace 1000kW",
+   "location": "RoW",
+   "product": "heat, district or industrial, other than natural gas",
+   "gwp100": 0.009175270954020912
+  },
+  {
+   "key": "hexane",
+   "activity": "market for hexane",
+   "location": "GLO",
+   "product": "hexane",
+   "gwp100": 0.8107308829249863
+  },
+  {
+   "key": "inert_waste",
+   "activity": "market for inert waste, for final disposal",
+   "location": "RoW",
+   "product": "inert waste, for final disposal",
+   "gwp100": -0.01828174103890182
+  },
+  {
+   "key": "kcl",
+   "activity": "market for potassium chloride",
+   "location": "RoW",
+   "product": "potassium chloride",
+   "gwp100": 0.49137926891457023
+  },
+  {
+   "key": "lorry",
+   "activity": "market for transport, freight, lorry, unspecified",
+   "location": "RoW",
+   "product": "transport, freight, lorry, diesel, unspecified",
+   "gwp100": 0.1610320830983757
+  },
+  {
+   "key": "lpg",
+   "activity": "market for liquefied petroleum gas",
+   "location": "RoW",
+   "product": "liquefied petroleum gas",
+   "gwp100": 1.022270279348206
+  },
+  {
+   "key": "methanol",
+   "activity": "market for methanol",
+   "location": "RoW",
+   "product": "methanol",
+   "gwp100": 1.0091428730364176
+  },
+  {
+   "key": "naoh",
+   "activity": "market for sodium hydroxide, without water, in 50% solution state",
+   "location": "RoW",
+   "product": "sodium hydroxide, without water, in 50% solution state",
+   "gwp100": 1.539339224620264
+  },
+  {
+   "key": "naome",
+   "activity": "market for sodium methoxide",
+   "location": "GLO",
+   "product": "sodium methoxide",
+   "gwp100": 3.2490517890818227
+  },
+  {
+   "key": "ng",
+   "activity": "market for natural gas, high pressure",
+   "location": "JP",
+   "product": "natural gas, high pressure",
+   "gwp100": 0.7775495691594752
+  },
+  {
+   "key": "ng_heat",
+   "activity": "market for heat, district or industrial, natural gas",
+   "location": "RoW",
+   "product": "heat, district or industrial, natural gas",
+   "gwp100": 0.0378320593912926
+  },
+  {
+   "key": "nh3",
+   "activity": "market for ammonia, anhydrous, liquid",
+   "location": "RoW",
+   "product": "ammonia, anhydrous, liquid",
+   "gwp100": 3.205913560305597
+  },
+  {
+   "key": "steel",
+   "activity": "market for steel, low-alloyed",
+   "location": "GLO",
+   "product": "steel, low-alloyed",
+   "gwp100": 2.0271012866141542
+  },
+  {
+   "key": "tanker",
+   "activity": "market for transport, freight, sea, tanker for liquid goods other than petroleum and liquefied natural gas, HFO",
+   "location": "GLO",
+   "product": "transport, freight, sea, tanker for liquid goods other than petroleum and liquefied natural gas, heavy fuel oil",
+   "gwp100": 0.013752176811921793
+  },
+  {
+   "key": "tap_water",
+   "activity": "market for tap water",
+   "location": "RoW",
+   "product": "tap water",
+   "gwp100": 0.001199725529699807
+  },
+  {
+   "key": "urea",
+   "activity": "market for urea",
+   "location": "RoW",
+   "product": "urea",
+   "gwp100": 1.7100959151314217
+  },
+  {
+   "key": "ww_treat",
+   "activity": "market for wastewater, average",
+   "location": "RoW",
+   "product": "wastewater, average",
+   "gwp100": -0.28159441818052194
+  }
+ ]
+}
